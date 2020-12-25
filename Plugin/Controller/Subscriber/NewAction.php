@@ -74,7 +74,7 @@ class NewAction
         Session $customerSession,
         ScopeConfigInterface $scopeConfig,
         CustomerUrl $customerUrl,
-        EmailValidator $emailValidator = null
+        EmailValidator $emailValidator
     ) {
         $this->customerAccountManagement = $customerAccountManagement;
         $this->resultJsonFactory = $resultJsonFactory;
@@ -95,7 +95,8 @@ class NewAction
      */
     public function aroundExecute($subject, $procede)
     {
-        if (!$subject->getRequest()->isXmlHttpRequest()) {
+        $request = $subject->getRequest();
+        if (!$request->isXmlHttpRequest()) {
             return $procede();
         } else {
             $response = [
@@ -103,8 +104,8 @@ class NewAction
                 'msg' => __('Something went wrong with the subscription.'),
             ];
 
-            if ($subject->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
-                $email = (string)$subject->getRequest()->getPost('email');
+            if ($request->isPost() && $request->getPost('email')) {
+                $email = (string)$request->getPost('email');
 
                 try {
                     $this->validateEmailFormat($email);
