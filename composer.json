@@ -1,0 +1,33 @@
+{
+  "name": "magepal/magento2-ajax-newsletter-subscribe",
+  "version": "1.2.1",
+  "description": "Ajax Newsletter Subscription",
+    "keywords": ["magento2 ajax newsletter", "magento 2 ajax subscription", "magento newsletter ajax"],
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*"
+  },
+  "license": [
+    "Proprietary"
+  ],
+    "homepage": "https://www.magepal.com/",
+    "support": {
+        "email": "support@magepal.com"
+    },
+    "authors": [
+        {
+            "name": "Renon Stewart",
+            "email": "renon@magepal.com",
+            "homepage": "https://www.magepal.com/",
+            "role": "Leader"
+        }
+    ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "MagePal\\AjaxNewsletterSubscribe\\": ""
+    }
+  }
+}
